@@ -17,8 +17,7 @@ actions = ['up', 'right', 'left', 'down', 'stay']
 
 # Create a 2D numpy array to hold the rewards for each state. 
 # The array contains 11 rows and 11 columns (to match the shape of the environment), and each value is initialized to -100.
-rewards = np.full((environment_rows, environment_columns), -100.)
-rewards[5, 0] = 100. #set the reward for the packaging area to 100
+rewards = np.full((environment_rows, environment_columns), -100.) #set the reward for the packaging area to 100
 
 # Define aisle locations (i.e., white squares) for rows 1 through 9
 aisles = {} # Store locations in a dictionary
@@ -38,6 +37,8 @@ for row_index in range(1, 10):
   for column_index in aisles[row_index]:
     rewards[row_index, column_index] = -1.
   
+rewards[5, 0] = 100.
+
 # Print rewards matrix
 for row in rewards:
   print(row)
@@ -154,4 +155,4 @@ def main():
 main()
 
 # Display a few shortest paths
-print(get_shortest_path(3, 9))
+print(get_shortest_path(1, 1))
