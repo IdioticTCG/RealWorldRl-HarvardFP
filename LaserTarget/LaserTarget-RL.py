@@ -22,22 +22,21 @@ rewards = np.full((environment_rows, environment_columns), -100.) #set the rewar
 # Define aisle locations (i.e., white squares) for rows 1 through 9
 aisles = {} # Store locations in a dictionary
 aisles[1] = [i for i in range(1, 10)]
-aisles[2] = [1, 7, 9]
-aisles[3] = [i for i in range(1, 8)]
-aisles[3].append(9)
-aisles[4] = [3, 7]
-aisles[5] = [i for i in range(11)]
-aisles[6] = [5]
+aisles[2] = [i for i in range(1, 10)]
+aisles[3] = [i for i in range(1, 10)]
+aisles[4] = [i for i in range(1, 10)]
+aisles[5] = [i for i in range(1, 10)]
+aisles[6] = [i for i in range(1, 10)]
 aisles[7] = [i for i in range(1, 10)]
-aisles[8] = [3, 7]
-aisles[9] = [i for i in range(11)]
+aisles[8] = [i for i in range(1, 10)]
+aisles[9] = [i for i in range(1, 10)]
 
 # Set the rewards for all aisle locations (i.e., white squares)
 for row_index in range(1, 10):
   for column_index in aisles[row_index]:
     rewards[row_index, column_index] = -1.
   
-rewards[5, 0] = 100.
+rewards[5, 5] = 100.
 
 # Print rewards matrix
 for row in rewards:
@@ -119,7 +118,7 @@ def main():
   learning_rate = 0.9 # The rate at which the AI agent should learn
 
   # Run through 1000 training episodes
-  for episode in range(250):
+  for episode in range(1000):
     # Get the starting location for this episode
     row_index, column_index = get_starting_location()
 
