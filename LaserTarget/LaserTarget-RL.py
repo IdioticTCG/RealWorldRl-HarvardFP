@@ -104,7 +104,7 @@ def get_next_location(current_column_index, action_index):
 def get_shortest_path(start_column_index):
     current_column_index = start_column_index
     shortest_path = []
-    shortest_path.append([current_column_index])
+    shortest_path.append(current_column_index)
 
     # Continue moving along the path until we reach the goal (i.e., the item packaging location)
     while not is_terminal_state(current_column_index):
@@ -115,7 +115,7 @@ def get_shortest_path(start_column_index):
 
       # Move to the next location on the path, and add the new location to the list
       current_column_index = get_next_location(current_column_index, action_index)
-      shortest_path.append([current_column_index])
+      shortest_path.append(current_column_index)
     return shortest_path
 
 def main():
@@ -146,11 +146,28 @@ def main():
       # Update the Q-value for the previous state and action pair
       new_q_value = old_q_value + (learning_rate * temporal_difference)
       q_values[old_column_index, action_index] = new_q_value
-
 main()
 
 # Display a few shortest paths
-print(get_shortest_path(1))
+shortest_path = get_shortest_path(1)
+
+def read_moves(shortest_path):
+    # Create Varibles
+    current_node = 0
+    move_array = []
+
+    while current_node + 1 <= len(shortest_path):
+        if (shortest_path[current_node] - (shortest_path[current_node] + 1)) < 0:
+            move_array.append("Right")
+
+        else:
+            move_array.append("Left")
+
+        current_node += 1
+
+    print(move_array)
+
+read_moves(shortest_path)
 
 # Exit Pins
 ServoA.stop()
