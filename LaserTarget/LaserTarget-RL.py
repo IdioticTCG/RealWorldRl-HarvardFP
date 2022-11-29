@@ -167,7 +167,7 @@ def read_moves(shortest_path):
 
     print(move_array)
 
-read_moves(shortest_path)
+read_moves([shortest_path])
 
 # Exit Pins
 ServoA.stop()
